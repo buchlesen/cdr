@@ -181,6 +181,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ResponseMacroServiceProvider::class,
+
+        // Components
+        Consigliere\Components\ServiceProvider::class,
+
     ],
 
     /*
@@ -228,6 +232,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+
+        // Components
+        'Component' => Consigliere\Components\Facades\Component::class,
     ],
 
 ];
