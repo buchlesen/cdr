@@ -120,7 +120,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
@@ -184,6 +184,9 @@ return [
 
         // Components
         Consigliere\Components\ServiceProvider::class,
+
+        // Deal registration app
+        App\Components\DealRegistration\Providers\DealRegistrationServiceProvider::class,
 
     ],
 
