@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2016 Jad Joubran
+Copyright (c) 2017 anonymoussc <50c5ac69@opayq.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

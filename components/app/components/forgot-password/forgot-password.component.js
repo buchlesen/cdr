@@ -2,12 +2,12 @@ class ForgotPasswordController {
     constructor(API, ToastService, $state) {
         'ngInject';
 
-        this.API          = API;
-        this.$state       = $state;
+        this.API = API;
+        this.$state = $state;
         this.ToastService = ToastService;
     }
 
-    $onInit() {
+    $onInit(){
         this.email = '';
     }
 
@@ -22,8 +22,8 @@ class ForgotPasswordController {
 }
 
 export const ForgotPasswordComponent = {
-    templateUrl : './views/app/components/forgot-password/forgot-password.component.html',
-    controller  : ForgotPasswordController,
+    templateUrl: './views/app/components/forgot-password/forgot-password.component.html',
+    controller: ForgotPasswordController,
     controllerAs: 'vm',
-    bindings    : {}
+    bindings: {}
 }

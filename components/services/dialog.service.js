@@ -23,7 +23,7 @@ export class DialogService {
         return this.$mdDialog.hide(params);
     }
 
-    cancel() {
+    cancel(){
         return this.$mdDialog.cancel();
     }
 

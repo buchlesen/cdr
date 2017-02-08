@@ -9,9 +9,9 @@ require('./tasks/bower.task.js');
 
 // setting assets paths
 elixir.config.assetsPath = './';
-elixir.config.css.folder = 'angular';
-elixir.config.css.sass.folder = 'angular';
-elixir.config.js.folder = 'angular';
+elixir.config.css.folder = 'components';
+elixir.config.css.sass.folder = 'components';
+elixir.config.js.folder = 'components';
 
 /*
  |--------------------------------------------------------------------------
@@ -41,18 +41,18 @@ elixir.config.js.folder = 'angular';
          'node_modules/angular-mocks/angular-mocks.js',
          'node_modules/ng-describe/dist/ng-describe.js',
          'public/js/app.js',
-         'tests/angular/**/*.spec.js'
+         'tests/components/**/*.spec.js'
      ];
 
 elixir(mix => {
     mix.bower()
-       .copy('angular/app/**/*.html', 'public/views/app/')
-       .copy('angular/dialogs/**/*.html', 'public/views/dialogs/')
+       .copy('components/app/**/*.html', 'public/views/app/')
+       .copy('components/dialogs/**/*.html', 'public/views/dialogs/')
        .webpack('index.main.js', 'public/js/app.js')
        .sass(['**/*.scss', 'critical.scss'], 'public/css')
        .sass('critical.scss', 'public/css/critical.css')
        .styles(styles, 'public/css/final.css')
-       .eslint('angular/**/*.js')
+       .eslint('components/**/*.js')
        .combine(scripts, 'public/js/final.js')
        .version(assets)
        .swPrecache();

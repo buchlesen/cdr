@@ -11,14 +11,6 @@
 |
 */
 
-Route::get('/', 'AngularController@serveApp')->name('main.home');
-
-Route::get('/', function() {
-    if (Route::has('streams.login')) {
-        return redirect()->route('streams.login');
-    }
-
-    return redirect()->route('main.home');
-});
+Route::get('/', 'AngularController@serveApp');
 
 Route::get('/unsupported-browser', 'AngularController@unsupported');

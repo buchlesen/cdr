@@ -2,15 +2,15 @@ class ResetPasswordController {
     constructor(API, ToastService, $state) {
         'ngInject';
 
-        this.API          = API;
-        this.$state       = $state;
+        this.API = API;
+        this.$state = $state;
         this.ToastService = ToastService;
     }
 
-    $onInit() {
-        this.password              = '';
+    $onInit(){
+        this.password = '';
         this.password_confirmation = '';
-        this.isValidToken          = false;
+        this.isValidToken = false;
 
         this.verifyToken();
     }
@@ -30,9 +30,9 @@ class ResetPasswordController {
 
     submit() {
         let data = {
-            email                : this.$state.params.email,
-            token                : this.$state.params.token,
-            password             : this.password,
+            email: this.$state.params.email,
+            token: this.$state.params.token,
+            password: this.password,
             password_confirmation: this.password_confirmation
         };
 
@@ -44,8 +44,8 @@ class ResetPasswordController {
 }
 
 export const ResetPasswordComponent = {
-    templateUrl : './views/app/components/reset-password/reset-password.component.html',
-    controller  : ResetPasswordController,
+    templateUrl: './views/app/components/reset-password/reset-password.component.html',
+    controller: ResetPasswordController,
     controllerAs: 'vm',
-    bindings    : {}
+    bindings: {}
 }

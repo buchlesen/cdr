@@ -2,8 +2,8 @@ class AppRootController {
     constructor($mdToast, ToastService, $window) {
         'ngInject';
 
-        this.$window      = $window;
-        this.$mdToast     = $mdToast;
+        this.$window = $window;
+        this.$mdToast = $mdToast;
         this.ToastService = ToastService;
     }
 
@@ -22,7 +22,7 @@ class AppRootController {
 
     handleRegistration(registration) {
         registration.onupdatefound = () => {
-            const installingWorker         = registration.installing;
+            const installingWorker = registration.installing;
             installingWorker.onstatechange = () => {
                 if (installingWorker.state === 'installed') {
                     if (!navigator.serviceWorker.controller) {
@@ -54,8 +54,8 @@ class AppRootController {
 }
 
 export const AppRootComponent = {
-    templateUrl : './views/app/components/app-root/app-root.component.html',
-    controller  : AppRootController,
+    templateUrl: './views/app/components/app-root/app-root.component.html',
+    controller: AppRootController,
     controllerAs: 'vm',
-    bindings    : {}
+    bindings: {}
 }

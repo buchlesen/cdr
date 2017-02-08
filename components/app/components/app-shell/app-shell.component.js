@@ -1,17 +1,17 @@
-class AppShellController {
-    constructor() {
+class AppShellController{
+    constructor(){
         'ngInject';
 
         //
     }
 
-    $onInit() {
+    $onInit(){
     }
 }
 
 export const AppShellComponent = {
-    templateUrl : './views/app/components/app-shell/app-shell.component.html',
-    controller  : AppShellController,
+    templateUrl: './views/app/components/app-shell/app-shell.component.html',
+    controller: AppShellController,
     controllerAs: 'vm',
-    bindings    : {}
+    bindings: {}
 }

@@ -12,6 +12,6 @@ export function RoutesRun($state, $transitions, $auth) {
         }
     };
 
-    $transitions.onBefore(requiresAuthCriteria, redirectToLogin, {priority: 10});
+    $transitions.onBefore(requiresAuthCriteria, redirectToLogin, {priority:10});
 
 }
