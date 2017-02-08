@@ -185,6 +185,9 @@ return [
         // Components
         Consigliere\Components\ServiceProvider::class,
 
+        // Deal registration app
+        App\Components\DealRegistration\Providers\DealRegistrationServiceProvider::class,
+
     ],
 
     /*
