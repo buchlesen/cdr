@@ -1,9 +1,14 @@
 {
   "name"        : "onsigbaar/framework",
-  "description" : "The Laravel Framework.",
+  "description" : "Onsigbaar Framework.",
   "keywords"    : [
+    "onsigbaar",
     "framework",
-    "laravel"
+    "laravel",
+    "angularjs",
+    "angular-material",
+    "single-page-applications",
+    "progressive-web-applications"
   ],
   "license"     : "MIT",
   "type"        : "project",
