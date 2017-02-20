@@ -120,7 +120,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
@@ -182,8 +182,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ResponseMacroServiceProvider::class,
 
-        // Components
-        Consigliere\Components\ServiceProvider::class,
+        // Component
+        Consigliere\Foundation\FoundationServiceProvider::class,
 
         // Deal registration app
         App\Components\DealRegistration\Providers\DealRegistrationServiceProvider::class,
@@ -235,9 +235,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-
-        // Components
-        'Component' => Consigliere\Components\Facades\Component::class,
 
     ],
 
