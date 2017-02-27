@@ -23,12 +23,3 @@ Route::get('/', function() {
 
 Route::get('/unsupported-browser', 'AngularController@unsupported');
 
-
-/*Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});*/
-
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
