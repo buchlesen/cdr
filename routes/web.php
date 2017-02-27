@@ -14,11 +14,21 @@
 Route::get('/', 'AngularController@serveApp')->name('main.home');
 
 Route::get('/', function() {
-    if (Route::has('streams.login')) {
-        return redirect()->route('streams.login');
+    if (Route::has('voyager.login')) {
+        return redirect()->route('voyager.login');
     }
 
     return redirect()->route('main.home');
 });
 
 Route::get('/unsupported-browser', 'AngularController@unsupported');
+
+
+/*Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});*/
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
