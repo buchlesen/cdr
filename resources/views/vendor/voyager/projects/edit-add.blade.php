@@ -45,6 +45,13 @@
             overflow-x: hidden;
             min-height: 100%;
         }
+
+        /* Medium Devices, Desktops */
+        @media only screen and (min-width : 992px) {
+            .btn-mrg {
+                margin-top: 1.8em;
+            }
+        }
     </style>
 
     <link rel="stylesheet" type="text/css" href="{{ config('voyager.assets_path') }}/lib/js/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.min.css" >
@@ -121,14 +128,23 @@
                                 <input type="text" class="form-control" id="hqAddress" name="hqAddress" placeholder="" value="@if(isset($dataTypeContent->hq_address)){{ $dataTypeContent->hq_address }}@endif" data-parsley-required>
                             </div>
 
-                            <div class="form-group">
-                                <label for="branchAddress">Branch Address</label>
-                                <input type="text" class="form-control" id="branchAddress" name="branchAddress[]" placeholder="" value="@if(isset($dataTypeContent->branch_address)){{ $dataTypeContent->branch_address }}@endif">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <label for="branchAddress">Branch Address</label>
+                                    <input type="text" class="form-control" id="branchAddress" name="branchAddress[]" placeholder="" value="@if(isset($dataTypeContent->branch_address)){{ $dataTypeContent->branch_address }}@endif">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-default btn-mrg">Delete</button>
+                                </div>
                             </div>
 
-                            <button type="button" id="addBranchAddress" class="btn btn-primary pull-right">
-                                @if(isset($dataTypeContent->id)){{ 'More branch address' }}@else<?= '<i class="icon wb-plus-circle"></i> More branch address'; ?>@endif
-                            </button>
+
+
+                            <div class="form-group" id="aba">
+                                <button type="button" id="addBranchAddress" class="btn btn-primary">
+                                    @if(isset($dataTypeContent->id)){{ 'More branch address' }}@else<?= '<i class="icon wb-plus-circle"></i> More branch address'; ?>@endif
+                                </button>
+                            </div>
 
                             <div class="form-group">
                                 <label for="ownership">Ownership (main shareholder)</label>
@@ -497,8 +513,9 @@
                     '<label for="meetingRoomCapacity">Meeting room capacity</label>' +
                     '<input type="text" class="form-control" id="meetingRoomCapacity" name="meetingRoomCapacity[]" placeholder="" value="@if(isset($dataTypeContent->meeting_room_capacity)){{ $dataTypeContent->meeting_room_capacity }}@endif" data-parsley-type="number">' +
                 '</div>' +
-                    '<button type="button" id="addMeetingRoom" class="btn btn-primary pull-right">More meeting room capacity</button>' +
-                '<br />' +
+                '<div class="form-group">' +
+                    '<button type="button" id="addMeetingRoom" class="btn btn-primary">More meeting room capacity</button>' +
+                '</div>' +
                 '<div class="form-group">' +
                     '<label for="numberOfBallroom">How Many Ballroom</label>' +
                     '<input type="text" class="form-control" id="numberOfBallroom" name="numberOfBallroom" placeholder="" value="@if(isset($dataTypeContent->number_of_ballroom)){{ $dataTypeContent->number_of_ballroom }}@endif" data-parsley-type="number">' +
@@ -508,22 +525,50 @@
                     '<input type="text" class="form-control" id="ballroomCapacity" name="ballroomCapacity[]" placeholder="" value="@if(isset($dataTypeContent->ballroom_capacity)){{ $dataTypeContent->ballroom_capacity }}@endif" data-parsley-type="number">' +
                 '</div>' +
                 '<div class="form-group addBallroom" >' +
-                    '<button type="button" id="addBallroom" class="btn btn-primary pull-right">More ballroom capacity</button>' +
-                '</div>' +
-                '<br />';
+                    '<button type="button" id="addBallroom" class="btn btn-primary">More ballroom capacity</button>' +
+                '</div>';
 
         // Add branch address
         var number = 0;
         $("button#addBranchAddress").on("click", function() {
             number++;
             if (number < 20) {
-                $("button#addBranchAddress").before('' +
-                        '<div class="form-group">' +
-                        '<label for="branchAddress">Branch Address ' + number + '</label>' +
-                        '<input type="text" class="form-control" id="branchAddress" name="branchAddress[]" placeholder="" value="">' +
-                        '</div>'
+                $("div#aba").before('' +
+                    '<div class="row">' +
+                        '<div class="col-md-10">' +
+                            '<label for="branchAddress">Branch Address ' + number + '</label>' +
+                            '<input type="text" class="form-control" id="branchAddress" name="branchAddress[]" placeholder="" value="">' +
+                        '</div>' +
+                        '<div class="col-md-2">' +
+                            '<button type="button" class="btn btn-default btn-mrg">Delete</button>' +
+                        '</div>' +
+                    '</div>'
                 );
             }
+        });
+
+        /*
+         $("div#aba").before('' +
+         '<div class="form-group">' +
+         '<label for="branchAddress">Branch Address ' + number + '</label>' +
+         '<input type="text" class="form-control" id="branchAddress" name="branchAddress[]" placeholder="" value="">' +
+         '</div>'
+         );
+
+        <div class="row">
+            <div class="col-md-10">
+                <label for="branchAddress">Branch Address</label>
+                <input type="text" class="form-control" id="branchAddress" name="branchAddress[]" placeholder="" value="@if(isset($dataTypeContent->branch_address)){{ $dataTypeContent->branch_address }}@endif">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-default btn-mrg">Delete</button>
+            </div>
+        </div>
+        */
+
+        $("button.btn-mrg").on("click", function() {
+            console.log('click');
+            $(this).parentsUntil("div.row").remove();
         });
 
         // Add meeting room
