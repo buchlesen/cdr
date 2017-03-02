@@ -138,8 +138,6 @@
                                 </div>
                             </div>
 
-
-
                             <div class="form-group" id="aba">
                                 <button type="button" id="addBranchAddress" class="btn btn-primary">
                                     @if(isset($dataTypeContent->id)){{ 'More branch address' }}@else<?= '<i class="icon wb-plus-circle"></i> More branch address'; ?>@endif
@@ -568,8 +566,13 @@
 
         $("button.btn-mrg").on("click", function() {
             console.log('click');
-            $(this).parentsUntil("div.row").remove();
+            $(this).parent().parent().remove();
         });
+
+        // Delete branch address
+        /*$(document).on("click", "button.btn-mrg", function() {
+            $("button.btn-mrg").parentsUntil("div.row").remove();
+        });*/
 
         // Add meeting room
         var roomNumber = 0;
