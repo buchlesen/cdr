@@ -462,7 +462,7 @@
     <script src="{{ config('voyager.assets_path') }}/lib/js/tinymce/tinymce.min.js"></script>
     <script src="{{ config('voyager.assets_path') }}/js/voyager_tinymce.js"></script>
     <script src="{{ asset('assets/lib/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('./assets/lib/parsley.min.js') }}"></script>
+    <script src="{{ asset('assets/lib/parsley.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
