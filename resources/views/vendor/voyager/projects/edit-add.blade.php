@@ -49,13 +49,6 @@
         .btn-mrg {
             margin-top: 1.8em;
         }
-
-        /* Medium Devices, Desktops */
-        /*@media only screen and (min-width : 992px) {
-            .btn-mrg {
-                margin-top: 1.8em;
-            }
-        }*/
     </style>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/lib/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.min.css') }}" >
@@ -90,10 +83,18 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <div class="form-group">
-                                <label for="partner">Partner Name</label>
-                                <input type="text" class="form-control" id="partner" name="partner" placeholder="" value="@if(isset($dataTypeContent->partner)){{ $dataTypeContent->partner }}@endif" data-parsley-required>
-                            </div>
+                            @if ( (Voyager::model('User')->find(Auth::id())->role_id == 1) || (Voyager::model('User')->find(Auth::id())->role_id == 2) )
+                                <div class="form-group">
+                                    <label for="partner">Partner Name</label>
+                                    <input type="text" class="form-control" id="partner" name="partner" placeholder="" value="@if(isset($dataTypeContent->partner)){{ $dataTypeContent->partner }}@endif" data-parsley-required>
+                                </div>
+                            @else
+                                <div class="form-group">
+                                    <label for="partner">Partner Name</label>
+                                    <input type="text" class="form-control" id="partner" name="partner" placeholder="" value="{{ Voyager::model('User')->find(Auth::id())->name }}" disabled>
+                                </div>
+                            @endif
+
                             <div class="form-group">
                                 <label for="accountManagerName">Name of Account Manager handling this opportunity</label>
                                 <input type="text" class="form-control" id="accountManagerName" name="accountManagerName" placeholder="" value="@if(isset($dataTypeContent->account_manager_name)){{ $dataTypeContent->account_manager_name }}@endif" data-parsley-required>
