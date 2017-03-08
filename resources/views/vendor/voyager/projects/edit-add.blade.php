@@ -3,51 +3,51 @@
 @section('css')
     <style>
         .panel .mce-panel {
-            border-left-color: #fff;
-            border-right-color: #fff;
+            border-left-color  : #fff;
+            border-right-color : #fff;
         }
 
         .panel .mce-toolbar,
         .panel .mce-statusbar {
-            padding-left: 20px;
+            padding-left : 20px;
         }
 
         .panel .mce-edit-area,
         .panel .mce-edit-area iframe,
         .panel .mce-edit-area iframe html {
-            padding: 0 10px;
-            min-height: 350px;
+            padding    : 0 10px;
+            min-height : 350px;
         }
 
         .mce-content-body {
-            color: #555;
-            font-size: 14px;
+            color     : #555;
+            font-size : 14px;
         }
 
         .panel.is-fullscreen .mce-statusbar {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            z-index: 200000;
+            position : absolute;
+            bottom   : 0;
+            width    : 100%;
+            z-index  : 200000;
         }
 
         .panel.is-fullscreen .mce-tinymce {
-            height:100%;
+            height : 100%;
         }
 
         .panel.is-fullscreen .mce-edit-area,
         .panel.is-fullscreen .mce-edit-area iframe,
         .panel.is-fullscreen .mce-edit-area iframe html {
-            height: 100%;
-            position: absolute;
-            width: 99%;
-            overflow-y: scroll;
-            overflow-x: hidden;
-            min-height: 100%;
+            height     : 100%;
+            position   : absolute;
+            width      : 99%;
+            overflow-y : scroll;
+            overflow-x : hidden;
+            min-height : 100%;
         }
 
         .btn-mrg {
-            margin-top: 1.8em;
+            margin-top : 1.8em;
         }
     </style>
 
@@ -133,20 +133,20 @@
                                 <input type="text" class="form-control" id="hqAddress" name="hqAddress" placeholder="" value="@if(isset($dataTypeContent->hq_address)){{ $dataTypeContent->hq_address }}@endif" data-parsley-required>
                             </div>
 
-                            <div class="input_fields_wrap">
+                            <div class="branch-address-wrapper">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12">
                                         <label for="branchAddress">Branch Address</label>
                                         <input type="text" class="form-control" id="branchAddress" name="branchAddress[]" placeholder="" value="@if(isset($dataTypeContent->branch_address)){{ $dataTypeContent->branch_address }}@endif">
                                     </div>
                                     {{--<div class="col-sm-2 col-md-2">
-                                        <button type="button" class="btn btn-default btn-mrg remove_field">Remove</button>
+                                        <button type="button" class="btn btn-default btn-mrg remove-field">Remove</button>
                                     </div>--}}
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="button" id="addBranchAddress" class="btn btn-primary add_field_button">
-                                        @if(isset($dataTypeContent->id)){{ 'More branch address' }}@else<?= '<i class="icon wb-plus-circle"></i> More branch address'; ?>@endif
+                                    <button type="button" id="addBranchAddress" class="btn btn-primary add-branch-address-button">
+                                        @if(isset($dataTypeContent->id)){{ 'Add branch address' }}@else<?= '<i class="icon wb-plus-circle"></i> Add branch address'; ?>@endif
                                     </button>
                                 </div>
                             </div>
@@ -517,96 +517,130 @@
                         '<label for="numberOfMeetingRooms">How many meeting rooms?</label>' +
                         '<input type="text" class="form-control" id="numberOfMeetingRooms" name="numberOfMeetingRooms" placeholder="" value="@if(isset($dataTypeContent->number_of_meeting_rooms)){{ $dataTypeContent->number_of_meeting_rooms }}@endif" data-parsley-type="number">' +
                     '</div>' +
-                    '<div class="form-group">' +
-                        '<label for="meetingRoomCapacity">Meeting room capacity</label>' +
-                        '<input type="text" class="form-control" id="meetingRoomCapacity" name="meetingRoomCapacity[]" placeholder="" value="@if(isset($dataTypeContent->meeting_room_capacity)){{ $dataTypeContent->meeting_room_capacity }}@endif" data-parsley-type="number">' +
+
+                    '<div class="meeting-room-capacity-wrapper">' +
+                        '<div class="row">' +
+                            '<div class="col-sm-12 col-md-12">' +
+                                '<label for="meetingRoomCapacity">Meeting room capacity</label>' +
+                                '<input type="text" class="form-control" id="meetingRoomCapacity" name="meetingRoomCapacity[]" placeholder="" value="@if(isset($dataTypeContent->meeting_room_capacity)){{ $dataTypeContent->meeting_room_capacity }}@endif" data-parsley-type="number">' +
+                            '</div>' +
+                        '</div>' +
+
+                        '<div class="form-group">' +
+                            '<button type="button" id="addMeetingRoomCapacity" class="btn btn-primary add-meeting-room-capacity-button">' +
+                            '<i class="icon wb-plus-circle"></i> Add meeting room capacity' +
+                            '</button>' +
+                        '</div>' +
                     '</div>' +
-                    '<div class="form-group">' +
-                        '<button type="button" id="addMeetingRoom" class="btn btn-primary">More meeting room capacity</button>' +
-                    '</div>' +
+
                     '<div class="form-group">' +
                         '<label for="numberOfBallroom">How Many Ballroom</label>' +
                         '<input type="text" class="form-control" id="numberOfBallroom" name="numberOfBallroom" placeholder="" value="@if(isset($dataTypeContent->number_of_ballroom)){{ $dataTypeContent->number_of_ballroom }}@endif" data-parsley-type="number">' +
                     '</div>' +
-                    '<div class="form-group">' +
-                        '<label for="ballroomCapacity">Ballroom capacity</label>' +
-                        '<input type="text" class="form-control" id="ballroomCapacity" name="ballroomCapacity[]" placeholder="" value="@if(isset($dataTypeContent->ballroom_capacity)){{ $dataTypeContent->ballroom_capacity }}@endif" data-parsley-type="number">' +
-                    '</div>' +
-                    '<div class="form-group addBallroom" >' +
-                        '<button type="button" id="addBallroom" class="btn btn-primary">More ballroom capacity</button>' +
+
+                    '<div class="ballroom-capacity-wrapper">' +
+                        '<div class="row">' +
+                            '<div class="col-sm-12 col-md-12">' +
+                                '<label for="ballroomCapacity">Ballroom capacity</label>' +
+                                '<input type="text" class="form-control" id="ballroomCapacity" name="ballroomCapacity[]" placeholder="" value="@if(isset($dataTypeContent->ballroom_capacity)){{ $dataTypeContent->ballroom_capacity }}@endif" data-parsley-type="number">' +
+                            '</div>' +
+                        '</div>' +
+
+                        '<div class="form-group">' +
+                            '<button type="button" id="addBallroomCapacity" class="btn btn-primary add-ballroom-capacity-button">' +
+                                '<i class="icon wb-plus-circle"></i> Add ballroom capacity' +
+                            '</button>' +
+                        '</div>' +
                     '</div>';
 
-            // Add branch address
-            var number = 0;
-            $("button#addBranchAddress").on("click", function() {
-                number++;
-                if (number < 20) {
-                    $("div#aba").before('' +
+            /* Add branch address */
+            var max_fields           = 20;
+            var branchAddressWrapper = $(".branch-address-wrapper");
+            var addBranchAddress     = $(".add-branch-address-button");
+
+            var x = 1;
+            $(addBranchAddress).click(function(e){
+                e.preventDefault();
+                if(x < max_fields){
+                    x++;
+                    $(branchAddressWrapper).append('' +
                         '<div class="row">' +
-                            '<div class="col-md-10">' +
-                                '<label for="branchAddress">Branch Address ' + number + '</label>' +
-                                '<input type="text" class="form-control" id="branchAddress" name="branchAddress[]" placeholder="" value="">' +
+                            '<div class="col-sm-10 col-md-10">' +
+                                '<label for="branchAddress' + x + '">Branch Address ' + x + '</label>' +
+                                '<input type="text" class="form-control" id="branchAddress' + x + '" name="branchAddress[]" placeholder="" value="">' +
                             '</div>' +
-                            '<div class="col-md-2">' +
-                                '<button type="button" class="btn btn-default btn-mrg">Delete</button>' +
+                            '<div class="col-sm-2 col-md-2">' +
+                                '<button type="button" class="btn btn-default btn-mrg remove-field">Remove</button>' +
                             '</div>' +
                         '</div>'
                     );
                 }
             });
 
-            /* Add branch address */
-            var max_fields      = 20; //maximum input boxes allowed
-            var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-            var add_button      = $(".add_field_button"); //Add button ID
-
-            var x = 1; //initlal text box count
-            $(add_button).click(function(e){ //on add input button click
+            $(branchAddressWrapper).on("click", ".remove-field", function(e) {
                 e.preventDefault();
-                if(x < max_fields){ //max input box allowed
-                    x++; //text box increment
-                    $(wrapper).append('' +
-                            '<div class="row">' +
-                                '<div class="col-sm-10 col-md-10">' +
-                                    '<label for="branchAddress">Branch Address ' + x + '</label>' +
-                                    '<input type="text" class="form-control" id="branchAddress" name="branchAddress[]" placeholder="" value="">' +
-                                '</div>' +
-                                '<div class="col-sm-2 col-md-2">' +
-                                    '<button type="button" class="btn btn-default btn-mrg remove_field">Remove</button>' +
-                                '</div>' +
-                            '</div>'
-                    ); //add input box
+                $(this).parent('div').parent('div').remove();
+                x--;
+            });
+            /* Add branch address */
+
+            /* Add meeting room capacity */
+            var meetingRoomCapacityMaxField     = 20;
+            // var meetingRoomCapacityWrapper = $(".meeting-room-capacity-wrapper");
+            // var addMeetingRoomCapacity     = $(".add-meeting-room-capacity-button");
+
+            var y = 1;
+            $(document).on("click", "button.add-meeting-room-capacity-button", function() {
+                if (y < meetingRoomCapacityMaxField) {
+                    y++;
+                    $(".meeting-room-capacity-wrapper").append('' +
+                        '<div class="row">' +
+                            '<div class="col-sm-10 col-md-10">' +
+                            '<label for="meetingRoomCapacity'+ y +' ">Meeting room ' + y + ' capacity</label>' +
+                                '<input type="text" class="form-control" id="meetingRoomCapacity' + y + ' " name="meetingRoomCapacity[]" placeholder="" value="">' +
+                            '</div>' +
+                            '<div class="col-sm-2 col-md-2">' +
+                                '<button type="button" class="btn btn-default btn-mrg remove-meeting-room-capacity">Remove</button>' +
+                            '</div>' +
+                        '</div>'
+                    );
                 }
             });
 
-            $(wrapper).on("click",".remove_field", function(e){ //user click on remove
-                e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
+            $(document).on("click", ".remove-meeting-room-capacity", function() {
+                $(this).parent('div').parent('div').remove();
+                y--;
             });
-            /* Add branch address */
+            /* Add meeting room capacity */
 
-            // Add meeting room
-            var roomNumber = 0;
-            $(document).on("click", "button#addMeetingRoom", function() {
-                roomNumber++;
-                $("button#addMeetingRoom").before('' +
-                        '<div class="form-group">' +
-                            '<label for="meetingRoomCapacity">Meeting room ' + roomNumber + ' capacity</label>' +
-                            '<input type="text" class="form-control" id="meetingRoomCapacity" name="meetingRoomCapacity[]" placeholder="" value="">' +
+            /* Add ballroom capacity */
+            var ballroomCapacityMaxField     = 20;
+            // var ballroomCapacityWrapper = $(".ballroom-capacity-wrapper");
+            // var addBallroomCapacityButton     = $(".add-ballroom-capacity-button");
+
+            var z = 1;
+            $(document).on("click", "button.add-ballroom-capacity-button", function() {
+                if (z < ballroomCapacityMaxField) {
+                    y++;
+                    $(".ballroom-capacity-wrapper").append('' +
+                        '<div class="row">' +
+                            '<div class="col-sm-10 col-md-10">' +
+                                '<label for="ballroomCapacity' + z + '">Ballroom ' + z + ' capacity</label>' +
+                                '<input type="text" class="form-control" id="ballroomCapacity' + z + '" name="ballroomCapacity[]" placeholder="" value="">' +
+                            '</div>' +
+                            '<div class="col-sm-2 col-md-2">' +
+                                '<button type="button" class="btn btn-default btn-mrg remove-ballroom-capacity-field">Remove</button>' +
+                            '</div>' +
                         '</div>'
-                );
+                    );
+                }
             });
 
-            // Add ballroom
-            var ballroomNumber = 0;
-            $(document).on("click", "button#addBallroom", function() {
-                ballroomNumber++;
-                $("button#addBallroom").before('' +
-                        '<div class="form-group">' +
-                            '<label for="ballroomCapacity">Ballroom ' + ballroomNumber + ' capacity</label>' +
-                            '<input type="text" class="form-control" id="ballroomCapacity" name="ballroomCapacity[]" placeholder="" value="">' +
-                        '</div>'
-                );
+            $(document).on("click", ".remove-ballroom-capacity-field", function() {
+                $(this).parent('div').parent('div').remove();
+                z--;
             });
+            /* Add ballroom capacity */
 
             $("select#customerIndustryId").on("change", function() {
                 if ($('select#customerIndustryId').find(":selected").text() == 'Hospitality') {
