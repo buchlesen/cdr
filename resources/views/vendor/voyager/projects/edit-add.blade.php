@@ -621,7 +621,7 @@
             var z = 1;
             $(document).on("click", "button.add-ballroom-capacity-button", function() {
                 if (z < ballroomCapacityMaxField) {
-                    y++;
+                    z++;
                     $(".ballroom-capacity-wrapper").append('' +
                         '<div class="row">' +
                             '<div class="col-sm-10 col-md-10">' +
