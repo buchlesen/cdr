@@ -12,3 +12,4 @@ public/storage
 public/vendor
 database/migrations
 database/seeds
+app/Components
