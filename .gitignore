@@ -8,3 +8,7 @@ public/js
 public/css
 public/build
 public/views
+public/storage
+public/vendor
+database/migrations
+database/seeds
