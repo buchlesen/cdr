@@ -60,3 +60,11 @@ elixir(mix => {
        //enable front-end tests by adding the below task
        // .karma({jsDir: karmaJsDir});
 });
+
+// Copying view resources
+gulp.task('cp-rsc', function () {
+    return gulp.src([
+            './app/Components/DealRegistration/Resources/views/vendor/voyager/**/*.*'
+        ])
+        .pipe(gulp.dest('./resources/views/vendor/voyager/'));
+});
