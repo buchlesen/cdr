@@ -61,10 +61,17 @@ elixir(mix => {
        // .karma({jsDir: karmaJsDir});
 });
 
+var base = 'app/Components';
+
+// Delete entire folder
+gulp.task('clean-dir', function (cb) {
+   del(['dist'], cb);
+});
+
 // Copying view resources
 gulp.task('cp-rsc', function () {
     return gulp.src([
-            './app/Components/DealRegistration/Resources/views/vendor/voyager/**/*.*'
+            './' + base + '/DealRegistration/Resources/views/vendor/voyager/**/*.*'
         ])
         .pipe(gulp.dest('./resources/views/vendor/voyager/'));
 });
