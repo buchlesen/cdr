@@ -3,7 +3,7 @@
         @if (rand(1,100) == 100)
             <i class="voyager-rum-1"></i> Made with rum and even more rum
         @else
-            Made with <i class="voyager-heart"></i> by <a href="https://www.malifax.com.sg/" target="_blank">Malifax Technologies</a>
+            Made with <i class="voyager-heart"></i> by <a href="https://malifaxsolutions.com/" target="_blank">Malifax Solutions</a>
         @endif
         @php $version = Voyager::getVersion(); @endphp
         @if (!empty($version))

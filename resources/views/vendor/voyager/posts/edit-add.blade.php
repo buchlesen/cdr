@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <textarea class="form-control" name="excerpt">@if (isset($dataTypeContent->excerpt)){{ $dataTypeContent->excerpt }}@endif</textarea>
+                          <textarea class="form-control" name="excerpt">@if (isset($dataTypeContent->excerpt)){{ $dataTypeContent->excerpt }}@endif</textarea>
                         </div>
                     </div>
                 </div>
@@ -124,9 +124,9 @@
                             <div class="form-group">
                                 <label for="name">URL slug</label>
                                 <input type="text" class="form-control" id="slug" name="slug"
-                                       placeholder="slug"
-                                       @if(isset($dataTypeContent)){!! isFieldSlugAutoGenerator($dataTypeContent, "slug") !!}@endif
-                                       value="@if(isset($dataTypeContent->slug)){{ $dataTypeContent->slug }}@endif">
+                                    placeholder="slug"
+                                    @if(isset($dataTypeContent)){!! isFieldSlugAutoGenerator($dataTypeContent, "slug") !!}@endif
+                                    value="@if(isset($dataTypeContent->slug)){{ $dataTypeContent->slug }}@endif">
                             </div>
                             <div class="form-group">
                                 <label for="name">Post Status</label>
@@ -213,7 +213,7 @@
             $('#slug').slugify();
         });
     </script>
-    <script src="{{ config('voyager.assets_path') }}/lib/js/tinymce/tinymce.min.js"></script>
-    <script src="{{ config('voyager.assets_path') }}/js/voyager_tinymce.js"></script>
-    <script src="{{ config('voyager.assets_path') }}/js/slugify.js"></script>
+    <script src="{{ voyager_asset('lib/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ voyager_asset('js/voyager_tinymce.js') }}"></script>
+    <script src="{{ voyager_asset('js/slugify.js') }}"></script>
 @stop
