@@ -83,27 +83,7 @@
                                                 @endif
                                             @elseif($row->type == 'text')
                                                 @include('voyager::multilingual.input-hidden-bread-browse')
-                                                
-                                                {{-- @rn --}}
-
-                                                {{-- <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div> --}}
-                                                {{-- <p>{{ Voyager::model('User')->find(Auth::id())->role_id }}</p> --}}
-                                                {{-- <p>rowfield : {{ $row->field }} and data : {{ $data->id }} and code : {{ $data->code }}</p> --}}
-
-                                                @if ($row->field == 'price')
-                                                    @php $product = App\Components\DealRegistration\Models\ProductPricing::where([['role_id', '=', Voyager::model('User')->find(Auth::id())->role_id], ['product_id', '=', $data->id]])->first(); @endphp
-
-                                                    @if ( $product )
-                                                        {{ $product->price }}
-                                                    @else
-                                                        <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
-                                                    @endif
-                                                @else
-                                                    <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
-                                                @endif
-
-                                                {{-- @rn end --}}
-                                                
+                                                <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                                             @elseif($row->type == 'text_area')
                                                 @include('voyager::multilingual.input-hidden-bread-browse')
                                                 <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
@@ -112,7 +92,20 @@
                                                 <div class="readmore">{{ strlen( strip_tags($data->{$row->field}, '<b><i><u>') ) > 200 ? substr(strip_tags($data->{$row->field}, '<b><i><u>'), 0, 200) . ' ...' : strip_tags($data->{$row->field}, '<b><i><u>') }}</div>
                                             @else
                                                 @include('voyager::multilingual.input-hidden-bread-browse')
-                                                <span>{{ $data->{$row->field} }}</span>
+                                                {{-- <span>{{ $data->{$row->field} }}</span> --}}
+
+                                                {{-- @rn --}}
+
+                                                @if ($row->field == 'role_id')
+                                                    {{ $data->roleId->name }}
+                                                @elseif ($row->field == 'product_id')
+                                                    {{ $data->productId->code }}
+                                                @else
+                                                    <span>{{ $data->{$row->field} }}</span>
+                                                @endif
+
+                                                {{-- @rn end --}}
+
                                             @endif
                                         </td>
                                     @endforeach

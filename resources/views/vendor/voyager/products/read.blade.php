@@ -81,7 +81,24 @@
                                 <p>{{ strip_tags($dataTypeContent->{$row->field}, '<b><i><u>') }}</p>
                             @else
                                 @include('voyager::multilingual.input-hidden-bread-read')
-                                <p>{{ $dataTypeContent->{$row->field} }}</p>
+
+                                {{-- @rn --}}
+
+                                @if ($row->field == 'price')
+                                    @php $product = App\Components\DealRegistration\Models\ProductPricing::where([['role_id', '=', Voyager::model('User')->find(Auth::id())->role_id], ['product_id', '=', $dataTypeContent->id]])->first(); @endphp
+
+                                    @if ( $product )
+                                        {{ $product->price }}
+                                    @else
+                                        <p>{{ $dataTypeContent->{$row->field} }}</p>
+                                    @endif
+                                @else
+                                    <p>{{ $dataTypeContent->{$row->field} }}</p>
+                                @endif
+
+                                {{-- <p>{{ $dataTypeContent->{$row->field} }}</p> --}}
+
+                                {{-- @rn end --}}
                             @endif
                         </div><!-- panel-body -->
                         @if(!$loop->last)
