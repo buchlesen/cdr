@@ -185,7 +185,7 @@ return [
     |--------------------------------------------------------------------------
     | Published assets merge.
     | Published assets will merge into target assets directory or
-    | retain it's own components name
+    | retain it's own components (as a directory) name
     |--------------------------------------------------------------------------
     */
     'merge'    => [
