@@ -75,3 +75,11 @@ gulp.task('cp-rsc', function () {
         ])
         .pipe(gulp.dest('./resources/views/vendor/voyager/'));
 });
+
+// Copying public assets
+gulp.task('cp-pa', function () {
+    return gulp.src([
+            './' + base + '/DealRegistration/Resources/public/assets/**'
+        ])
+        .pipe(gulp.dest('./public/assets'));
+});
