@@ -1,5 +1,5 @@
 {
-    "name": "gaboots/gaboot",
+    "name": "laravel/laravel",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
@@ -20,14 +20,11 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.7",
         "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*",
-        "xethron/migrations-generator": "^2.0"
+        "symfony/dom-crawler": "3.1.*"
     },
     "autoload": {
         "classmap": [
-            "app",
-            "database",
-            "packages"
+            "database"
         ],
         "psr-4": {
             "App\\": "app/"
