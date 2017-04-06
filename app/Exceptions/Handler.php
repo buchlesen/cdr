@@ -2,12 +2,8 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Route;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
