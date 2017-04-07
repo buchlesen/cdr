@@ -1,9 +1,9 @@
 'use strict';
 
 const elixir = require('laravel-elixir');
+const del = require('del');
 
 require('laravel-elixir-eslint');
-
 require('./tasks/swPrecache.task.js');
 require('./tasks/bower.task.js');
 
@@ -61,25 +61,37 @@ elixir(mix => {
     // .karma({jsDir: karmaJsDir});
 });
 
-var base = 'app/Components';
+/*------------------------------------------------------------------------------------------------*/
 
-// Delete entire folder
-gulp.task('clean-dir', function (cb) {
-   del(['dist'], cb);
+var base = 'app/Components',
+    fromComponents = 'DealRegistration';
+
+// Delete entire folder of view vendor
+gulp.task('clean-view-vendor', function () {
+    return del(['./resources/views/vendor/voyager']).then(paths => {
+        console.log('Deleted files and voyager vendor folders:\n', paths.join('\n'));
+    });
 });
 
 // Copying view resources
-gulp.task('cp-rsc', function () {
+gulp.task('cp-rsc', ['clean-view-vendor'], function () {
     return gulp.src([
-            './' + base + '/DealRegistration/Resources/views/vendor/voyager/**/*.*'
+            './' + base + '/' + fromComponents + '/Resources/views/vendor/voyager/**/*.*'
         ])
-        .pipe(gulp.dest('./resources/views/vendor/voyager/'));
+        .pipe(gulp.dest('./resources/views/vendor/voyager'));
+});
+
+// Delete entire folder of view vendor
+gulp.task('clean-public-assets', function () {
+    return del(['./public/assets']).then(paths => {
+        console.log('Deleted files and public assets folders:\n', paths.join('\n'));
+    });
 });
 
 // Copying public assets
-gulp.task('cp-pa', function () {
+gulp.task('cp-pa', ['clean-public-assets'], function () {
     return gulp.src([
-            './' + base + '/DealRegistration/Resources/public/assets/**'
+            './' + base + '/' + fromComponents + '/Resources/public/assets/**'
         ])
         .pipe(gulp.dest('./public/assets'));
 });
